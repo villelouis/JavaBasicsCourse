@@ -12,13 +12,13 @@ public class Task<T> {
     }
 
     public T get() throws Exception {
-        if ((result != null) && (exception == null)) {
+        if (result != null && exception == null) {
             System.out.print("Has result  ");
             return result;
         } else if (exception != null) {
             throw exception;
         } else synchronized (Task.class) {
-            if ((result != null) && (exception == null)) {
+            if (result != null && exception == null) {
                 System.out.print("Has result  ");
                 return result;
             } else if (exception != null) {
