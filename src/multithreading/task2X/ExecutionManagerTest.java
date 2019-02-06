@@ -13,8 +13,8 @@ public class ExecutionManagerTest {
             }
         };
         Runnable[] tasks = new Runnable[10];
-        for (Runnable task : tasks) {
-            task = new Runnable() {
+        for (int k=0; k < tasks.length; k++) {
+            tasks[k] = new Runnable() {
                 @Override
                 public void run() {
                     try {

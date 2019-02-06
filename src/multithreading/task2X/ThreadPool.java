@@ -35,7 +35,7 @@ public class ThreadPool {
             threads[k] = new Thread(tasks[k]);
             threads[k].setUncaughtExceptionHandler(uncaughtExceptionHandler);
         }
-        unbegunTaskQueue = new LinkedList<Thread>(Arrays.asList(threads));
+        unbegunTaskQueue = new LinkedList<>(Arrays.asList(threads));
 
         for (Thread thread : threads) {
             thread.start();
@@ -67,7 +67,9 @@ public class ThreadPool {
         int completedTaskCount = 0;
         // считаем все завершённые потоки
         for (Thread thread : threads) {
-            completedTaskCount = thread.isAlive() ? completedTaskCount + 1 : completedTaskCount;
+            if (!thread.isAlive()){
+                completedTaskCount++;
+            }
         }
         // вычитаем количество неудачно завершившихся или прерванных
         completedTaskCount = completedTaskCount - InterruptedTaskCount - failedTaskCount;
