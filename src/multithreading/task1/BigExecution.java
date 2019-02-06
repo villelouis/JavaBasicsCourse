@@ -15,7 +15,7 @@ public class BigExecution implements Callable <String> {
         for (long k = 0; k < 100000001; k++){
             x++;
         }
-        Thread.sleep(700);
+        Thread.sleep(2000);
         return Long.toString(x);
     }
 }
